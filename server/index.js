@@ -26,7 +26,13 @@ app.use(express.static(path.join(__dirname, '../public')));
 let students = [];
 
 app.post('/api/student', (req, res)=>{
-   functionCall(test);
+   
+   try {
+      functionCall(test);
+   } catch (error) {
+      rollbar.error(error)
+   }
+
    let {name} = req.body
    name = name.trim()
 
