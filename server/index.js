@@ -26,6 +26,7 @@ app.use(express.static(path.join(__dirname, '../public')));
 let students = [];
 
 app.post('/api/student', (req, res)=>{
+   functionCall(test);
    let {name} = req.body
    name = name.trim()
 
@@ -42,7 +43,6 @@ app.post('/api/student', (req, res)=>{
        rollbar.error('student already exists')
        res.status(400).send('that student already exists')
    }
-
 })
 
 app.use(rollbar.errorHandler());
