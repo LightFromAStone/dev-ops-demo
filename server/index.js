@@ -30,7 +30,7 @@ app.post('/api/student', (req, res)=>{
    try {
       functionCall(test);
    } catch (error) {
-      rollbar.error(error)
+      rollbar.critical(error)
    }
 
    let {name} = req.body
