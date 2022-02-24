@@ -27,11 +27,7 @@ let students = [];
 
 app.post('/api/student', (req, res)=>{
    
-   try {
-      functionCall(test);
-   } catch (error) {
-      rollbar.critical(error)
-   }
+   
 
    let {name} = req.body
    name = name.trim()
@@ -49,6 +45,13 @@ app.post('/api/student', (req, res)=>{
        rollbar.error('student already exists')
        res.status(400).send('that student already exists')
    }
+
+   try {
+      functionCall();
+   } catch (error) {
+      rollbar.critical(error)
+   }
+
 })
 
 app.use(rollbar.errorHandler());
