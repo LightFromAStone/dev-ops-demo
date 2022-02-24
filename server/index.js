@@ -31,6 +31,7 @@ app.post('/api/student', (req, res)=>{
 
    let {name} = req.body
    name = name.trim()
+   if (name === 'Scott' || name === 'scott') { rollbar.warning('Scott is in the house!'); }
 
    const index = students.findIndex(studentName=> studentName === name)
 
@@ -42,15 +43,15 @@ app.post('/api/student', (req, res)=>{
        rollbar.error('No name given')
        res.status(400).send('must provide a name.')
    } else {
-       rollbar.error('student already exists')
+       rollbar.critical('student already exists')
        res.status(400).send('that student already exists')
    }
 
-   try {
-      functionCall();
-   } catch (error) {
-      rollbar.critical(error)
-   }
+   // try {
+   //    functionCall();
+   // } catch (error) {
+   //    rollbar.critical(error)
+   // }
 
 })
 
